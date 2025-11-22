@@ -22,7 +22,7 @@ typedef NTSTATUS(NTAPI* pdef_NtRaiseHardError)(NTSTATUS ErrorStatus,
 // action to run when the user guesses correctly.
 static void TriggerAction()
 {
-    MessageBoxA(NULL, "brace for impact", "Success", MB_OK | MB_ICONINFORMATION);
+    MessageBoxA(NULL, "Congrats! You live to see another day.", "Success", MB_OK | MB_ICONINFORMATION);
 }
 
 void TriggerBSOD()
@@ -63,7 +63,7 @@ void main()
 
     int maxAttempts;
 
-    // Ask user how many guesses they want (1–10)
+    // Ask user how many guesses they want (1â€“10)
     while (true)
     {
         std::cout << "How many guesses do you want? (1-10): ";
@@ -82,7 +82,7 @@ void main()
         std::cout << "Please pick a number between 1 and 10.\n";
     }
 
-    // attemptsLeft counts DOWN from user choice
+    // attemptsLeft counts down from user choice
     int attemptsLeft = maxAttempts;
 
     std::cout << "Guess the number (1-100). Enter 0 to quit.\n";
@@ -114,7 +114,6 @@ void main()
             continue;
         }
 
-        // subtract 1 attempt every valid guess
         attemptsLeft--;
 
         // check if no attempts left
@@ -129,6 +128,7 @@ void main()
         if (guess == secret)
         {
             std::cout << "Correct!\n";
+			TriggerAction();
             return;
         }
 
